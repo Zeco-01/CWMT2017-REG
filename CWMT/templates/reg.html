@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	 <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
 	<script type="text/javascript" src="js/validator.min.js"></script>
 </head>
@@ -118,7 +119,6 @@ function vali(){
 	var names = ["name","sex","phone","email","invoice","tax_id","address","id","stay"];
 	for (var i=0;i<names.length;i++){
 		var name = names[i]+"_err";
-		console.log(name);
 		var ele = document.getElementById(name);
 		ele.style.display = "none";
 	}
@@ -179,6 +179,26 @@ function vali(){
 
         }
         
+        }
+        else{
+          var data = {};
+          for (int i=0;i<names.length;i++){
+            var e = document.getElementById(name);
+            data[name] = e.value;
+          }
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.open("POST","ajax_test.php",true);
+          xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+          xmlhttp.send(JSON.stringify(data));
+          xmlhttp.onreadystatechange=function()
+            {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+              {
+                //document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+              }else{
+
+              }
+            }
         }
     });
  validator.validate();
