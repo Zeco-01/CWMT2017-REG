@@ -34,7 +34,7 @@ padding-right: 10px;
 margin-top: 10px;
 color: #888;
 }
-.basic-grey input[type="text"], .basic-grey input[type="email"], .basic-grey input[type="tel"],.basic-grey textarea, .basic-grey select {
+.basic-grey input[type="text"], .basic-grey input[type="date"],.basic-grey input[type="email"], .basic-grey input[type="tel"],.basic-grey textarea, .basic-grey select {
 border: 1px solid #DADADA;
 color: #888;
 height: 20px;
@@ -62,10 +62,10 @@ box-shadow: inset 0px 1px 4px #ECECEC;
 }
 .basic-grey textarea{
 padding: 5px 3px 3px 5px;
+height:100px;
 }
 .basic-grey select {
 background: #FFF url('../images/arrow.png') no-repeat right;
-
 appearance:none;
 -webkit-appearance:none;
 -moz-appearance: none;
@@ -75,9 +75,7 @@ width: 70%;
 height: 35px;
 line-height: 25px;
 }
-.basic-grey textarea{
-height:100px;
-}
+
 .basic-grey .button {
 background: #E27575;
 border: none;
@@ -132,4 +130,8 @@ color: #888;
 color: #888;
 padding: 0px 0px 10px 40px;
 display: block;
+}
+#stay_time{
+	display: none;
+
 }

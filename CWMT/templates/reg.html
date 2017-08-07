@@ -24,7 +24,7 @@
         <div id="sex_err" class="error_msg"></div>
     </label>
     <br/>
-    <br/>
+    
     <label>
         <span>手机号码:</span>
         <input id="phone" type="tel" name="phone"/>
@@ -73,8 +73,8 @@
         <span>住宿方式: </span>
 
         <input type="radio" value="no" name="stay" onclick=toggle2()>不住宿
-        <input type="radio" value="single" name="stay" onclick=toggle2()>单间
-        <input type="radio" value="multi" name="stay" onclick=toggle1()>合住
+        <input type="radio" value="single" name="stay" onclick=toggle3()>单间（每人每天350元）
+        <input type="radio" value="multi" name="stay" onclick=toggle1()>合住（两人每天390元）
         <div id="m_name" style="display:none">
             <input type="radio" value="yes" name="m_name">有合住人姓名
             <input type="radio" value="no" name="m_name" checked=true>无合住人姓名
@@ -82,9 +82,16 @@
         <div id="stay_err" class="error_msg"></div>
     </label>
     <br/>
-    <br/>
-
-
+<div id="stay_time">
+    <label >
+        <span>入住日期:</span>
+        <input type="date" name="in_date" style="margin-bottom: 10px"><br />
+    </label>
+    <label >
+        <span>离店日期:</span>
+        <input type="date" name="in_date" style="margin-bottom: 10px"><br />
+    </label>
+</div>
     <label>
         <span>注册类型:</span><select name="type">
         <option value="mg1">普通会员-9月10日前缴费-1600元</option>
@@ -129,12 +136,21 @@
         d = document.getElementById("m_name");
 
         d.style.display = "block";
-
+        d2 = document.getElementById("stay_time");
+        d2.style.display = "block";
     }
     function toggle2() {
         d = document.getElementById("m_name");
 
         d.style.display = "none";
+          d2 = document.getElementById("stay_time");
+        d2.style.display = "none";
+    }
+    function toggle3(){
+        d = document.getElementById("m_name");
+        d.style.display = "none";
+          d2 = document.getElementById("stay_time");
+        d2.style.display = "block";
     }
     function vali() {
         var tele = document.getElementById("time");
@@ -218,7 +234,10 @@
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById("test").style.display = "none";
                     } else {
-
+                        var conf_str = "";
+                        var conf = document.getElementById("confirm");
+                        conf.style.display = "block";
+                        conf.innerHTML = conf_str;
                     }
                 }
             }
