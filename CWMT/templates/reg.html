@@ -6,9 +6,84 @@
     <script type="text/javascript" src="js/validator.min.js"></script>
 </head>
 <body>
+    <div class="confirm"><h1>第十三届全国机器翻译研讨会（CWMT2017）会议注册
+        <span>会议网址：<a href="http://ee.dlut.edu.cn/CWMT2017/">http://ee.dlut.edu.cn/CWMT2017/</a><br />
+            时间：2017年9月27-29日<br/>
+            地点：大连市，国网辽宁省电力有限公司大连培训中心<br/>
+            主办单位：中国中文信息学会<br/>
+            承办单位：大连理工大学
+        </spans>
+    </h1>
+    <h2>
+        注册费说明
+    </h2>
+    <table class="payment" align="center">
+        <tr>
+            <th></th>
+            <th>会员</th>
+            <th>非会员</th>
+        </tr>
+        <tr>
+            <td rowspan="2">2017年9月10日之前缴费</td>
+            <td>学生 1000元</td>
+            <td>学生 1100元</td>
+        </tr>   
+        <tr >
+           
+            <td>非学生 1600元</td>
+            <td>非学生 1700元</td>
+
+        </tr>
+        <tr>
+            <td rowspan="2">2017年9月10日之后缴费</td>
+            <td>学生 1200元</td>
+            <td>学生 1300元</td>
+        </tr>   
+        <tr>
+           
+            <td>非学生 1800元</td>
+            <td>非学生 1900元</td>
+        </tr>   
+    </table>
+    <h2>
+        注册交费方式
+
+    </h2>
+
+    <table class="payment" align="center">
+        <tr>
+            <th>缴纳方式</th>
+            <th>具体信息</th>
+            <th>注意事项</th>
+        </tr>
+        <tr>
+            <td>银行转帐</td>
+            <td>开户银行：工商行北京市分行海淀西区支行<br />户        名：中国中文信息学会<br />账        号：0200004509014415619</td>
+            <td>请在附言中注明<strong>会议简称+姓名</strong></td>
+        </tr>   
+        <tr class="alt">
+            <td>办公室缴纳</td>
+            <td>地        址：北京海淀区中关村南四街4号院7号楼201房间<br />联系电话：010-62562916</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>支付宝账号转账</td>
+            <td>户        名：中国中文信息学会<br />账        号：cips_pay@163.com</td>
+            <td>请在付款说明中注明<strong>会议简称+姓名</strong></td>
+        </tr>   
+        <tr class="alt">
+            <td>现场缴费</td>
+            <td>现金或刷卡</td>
+            <td>会后邮寄发票</td>
+        </tr>   
+    </table>
+</div>
+
+
 <form action="" method="post" class="basic-grey" id="test">
-    <h1>会议注册
-        <span>&nbsp;&nbsp;&nbsp;请填写注册信息</span>
+     <h1>
+        注册信息
     </h1>
     <label>
 
@@ -50,7 +125,7 @@
     </label><br/>
 
     <label>
-        <span>发票邮寄地址:</span>
+        <span>发票邮寄地址:（现场缴费必填）</span>
         <input id="address" type="text" name="address"/>
         <div id="address_err" class="error_msg"></div>
     </label><br/>
@@ -67,17 +142,17 @@
         <input id="paper_id" type="text" name="paper_id"/>
         <div id="paper_id_err" class="error_msg"></div>
     </label>
-
+<br/>
 
     <label>
         <span>住宿方式: </span>
 
-        <input type="radio" value="no" name="stay" onclick=toggle2()>不住宿
+        <input type="radio" value="no" name="stay" onclick=toggle2()>自行解决
         <input type="radio" value="single" name="stay" onclick=toggle3()>单间（每人每天350元）
         <input type="radio" value="multi" name="stay" onclick=toggle1()>合住（两人每天390元）
         <div id="m_name" style="display:none">
             <input type="radio" value="yes" name="m_name">有合住人姓名
-            <input type="radio" value="no" name="m_name" checked=true>无合住人姓名
+            <input type="radio" value="no" name="m_name" >无合住人姓名
         </div>
         <div id="stay_err" class="error_msg"></div>
     </label>
@@ -91,17 +166,17 @@
         <span>离店日期:</span>
         <input type="date" name="in_date" style="margin-bottom: 10px"><br />
     </label>
-</div>
+</div><br/>
     <label>
         <span>注册类型:</span><select name="type">
         <option value="mg1">普通会员-9月10日前缴费-1600元</option>
         <option value="ms1">学生会员-9月10日前缴费-1000元</option>
-        <option value="nms1">非会员学生-9月10日前缴费-1200元</option>
-        <option value="nmg1">非学生非会员-9月10日前缴费-1800元</option>
+        <option value="nms1">非会员学生-9月10日前缴费-1100元</option>
+        <option value="nmg1">非学生非会员-9月10日前缴费-1700元</option>
         <option value="mg2">普通会员-9月10日后缴费-1800元</option>
         <option value="ms2">学生会员-9月10日后缴费-1200元</option>
-        <option value="nms2">非会员学生-9月10日后缴费-1400元</option>
-        <option value="nmg2">非学生非会员-9月10日后缴费-2000元</option>
+        <option value="nms2">非会员学生-9月10日后缴费-1300元</option>
+        <option value="nmg2">非学生非会员-9月10日后缴费-1900元</option>
     </select>
     </label><br/>
 
@@ -114,6 +189,7 @@
     <input type="hidden" name="time" id="time"/>
 </form>
 
+
 <div class="confirm" id="confirm">
     <h1>
         第十三届全国机器翻译研讨会（CWMT2017）注册确认
@@ -123,13 +199,11 @@
         注册确认信息已经发送到您的邮箱。
     </p><br />
     <h2>
-        确认与支付信息
+        注册确认信息
     </h2>
     <p id="information"></p><br />
-    <h2>
-        注册交费方式
-    </h2>
-    <p></p><br />
+    
+    <br />
 </div>
 <script type="text/javascript">
     function toggle1() {
@@ -155,7 +229,7 @@
     function vali() {
         var tele = document.getElementById("time");
         tele.value = new Date().toLocaleString();
-        var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "address", "id", "stay"];
+        var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "id", "stay"];
         for (var i = 0; i < names.length; i++) {
             var name = names[i] + "_err";
             var ele = document.getElementById(name);
@@ -190,11 +264,7 @@
                 name: 'tax_id',
                 display: "请输入发票纳税人识别号",
                 rules: 'required'
-            }, {
-                name: 'address',
-                display: "请输入发票邮寄地址",
-                rules: 'required'
-            }, {
+            },  {
                 name: 'id',
                 display: "身份证号不能为空|你输入的不是合法身份证号",
                 regexp_id: /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/,
