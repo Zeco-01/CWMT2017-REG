@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2730ccbf-1feb-45d6-bdec-0668b29cc76a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-    </list>
+    <list default="true" id="2730ccbf-1feb-45d6-bdec-0668b29cc76a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +19,7 @@
               <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
               <folding>
                 <element signature="e#638#670#0" expanded="true" />
-                <marker date="1502280709000" expanded="true" signature="823:826" ph="..." />
+                <marker date="1502281048000" expanded="true" signature="823:826" ph="..." />
               </folding>
             </state>
           </provider>
@@ -407,7 +405,7 @@
           <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
           <folding>
             <element signature="e#638#670#0" expanded="true" />
-            <marker date="1502280709000" expanded="true" signature="823:826" ph="..." />
+            <marker date="1502281048000" expanded="true" signature="823:826" ph="..." />
           </folding>
         </state>
       </provider>
