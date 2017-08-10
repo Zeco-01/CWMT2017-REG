@@ -303,7 +303,7 @@
                     data[name] = e.value;
                 }
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "ajax_test.php", true);
+                xmlhttp.open("POST", "/register/send/", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send(JSON.stringify(data));
                 xmlhttp.onreadystatechange = function () {
