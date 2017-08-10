@@ -206,6 +206,7 @@
     <br />
 </div>
 <script type="text/javascript">
+var j=0;
     function toggle1() {
         d = document.getElementById("m_name");
 
@@ -230,7 +231,7 @@
         var tele = document.getElementById("time");
         tele.value = new Date().toLocaleString();
         var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "id", "stay"];
-        var all_names = ["name","sex", "phone", "email", "invoice", "tax_id", "address","id","paper_id", "stay","in_date","out_date","type"]
+        var all_names = ["name","sex", "phone", "email", "invoice", "tax_id", "address","id","paper_id", "stay","in_date","out_date","type","time"]
         for (var i = 0; i < names.length; i++) {
             var name = names[i] + "_err";
             var ele = document.getElementById(name);
@@ -303,7 +304,7 @@
                     data[name] = e.value;
                 }
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "./register/send", true);
+                xmlhttp.open("POST", "./send", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send(JSON.stringify(data));
                 xmlhttp.onreadystatechange = function () {
@@ -314,7 +315,8 @@
                         conf.style.display = "block";
                         conf.innerHTML = conf_str;
                     } else {
-                        alert("error");
+                        alert("error"+j);
+                        j++;
                     }
                 }
             }

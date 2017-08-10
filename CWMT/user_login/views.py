@@ -13,6 +13,7 @@ def user_login_view(request):
 @csrf_exempt
 def record(request):
     a = request.POST
+    print a
     return HttpResponse("1234567")
 
 
