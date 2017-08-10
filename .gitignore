@@ -16,6 +16,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.pyc
 
 # =========================
 # Operating System Files
@@ -27,6 +28,7 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
+.idea
 
 # Thumbnails
 ._*
