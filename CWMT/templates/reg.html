@@ -164,7 +164,7 @@
     </label>
     <label >
         <span>离店日期:</span>
-        <input type="date" name="in_date" style="margin-bottom: 10px"><br />
+        <input type="date" name="out_date" style="margin-bottom: 10px"><br />
     </label>
 </div><br/>
     <label>
@@ -230,6 +230,7 @@
         var tele = document.getElementById("time");
         tele.value = new Date().toLocaleString();
         var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "id", "stay"];
+        var all_names = ["name","sex", "phone", "email", "invoice", "tax_id", "address","id","paper_id", "stay","in_date","out_date","type"]
         for (var i = 0; i < names.length; i++) {
             var name = names[i] + "_err";
             var ele = document.getElementById(name);
@@ -291,8 +292,9 @@
             }
             else {
                 var data = {};
-                for (var i = 0;i < names.length;i++)
+                for (var i = 0;i < all_names.length;i++)
                 {
+                    var name = all_names[i];
                     var e = document.getElementById(name);
                     data[name] = e.value;
                 }
@@ -303,11 +305,12 @@
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById("test").style.display = "none";
-                    } else {
                         var conf_str = "";
                         var conf = document.getElementById("confirm");
                         conf.style.display = "block";
                         conf.innerHTML = conf_str;
+                    } else {
+                        alert("error");
                     }
                 }
             }
