@@ -13,7 +13,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-*.pyc
 
 # Windows shortcuts
 *.lnk
@@ -29,8 +28,7 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
-.pyc
-
+.idea
 # Thumbnails
 ._*
 
@@ -48,4 +46,3 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-.pyc
