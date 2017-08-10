@@ -94,8 +94,8 @@
 
     <label>
         <span>性别: </span>
-        <input type="radio" value="male" name="sex">男
-        <input type="radio" value="female" name="sex">女
+        <input type="radio" value="male" name="sex" id="sex">男
+        <input type="radio" value="female" name="sex" id="sex">女
         <div id="sex_err" class="error_msg"></div>
     </label>
     <br/>
@@ -147,9 +147,9 @@
     <label>
         <span>住宿方式: </span>
 
-        <input type="radio" value="no" name="stay" onclick=toggle2()>自行解决
-        <input type="radio" value="single" name="stay" onclick=toggle3()>单间（每人每天350元）
-        <input type="radio" value="multi" name="stay" onclick=toggle1()>合住（两人每天390元）
+        <input type="radio" value="no" name="stay" onclick=toggle2() id="stay">自行解决
+        <input type="radio" value="single" name="stay" id="stay" onclick=toggle3()>单间（每人每天350元）
+        <input type="radio" value="multi" name="stay" id="stay" onclick=toggle1()>合住（两人每天390元）
         <div id="m_name" style="display:none">
             <input type="radio" value="yes" name="m_name">有合住人姓名
             <input type="radio" value="no" name="m_name" >无合住人姓名
@@ -160,15 +160,15 @@
 <div id="stay_time">
     <label >
         <span>入住日期:</span>
-        <input type="date" name="in_date" style="margin-bottom: 10px"><br />
+        <input type="date" name="in_date" style="margin-bottom: 10px" id="in_date"><br />
     </label>
     <label >
         <span>离店日期:</span>
-        <input type="date" name="out_date" style="margin-bottom: 10px"><br />
+        <input type="date" name="out_date" style="margin-bottom: 10px" id="out_date"><br />
     </label>
 </div><br/>
     <label>
-        <span>注册类型:</span><select name="type">
+        <span>注册类型:</span><select name="type" id="type">
         <option value="mg1">普通会员-9月15日前缴费-1600元</option>
         <option value="ms1">学生会员-9月15日前缴费-1000元</option>
         <option value="nms1">非会员学生-9月15日前缴费-1100元</option>
@@ -284,6 +284,7 @@
                     var name = obj.errors[i].name;
 
                     var ele = document.getElementById(name + "_err");
+
                     ele.style.display = "inline";
                     ele.innerHTML = error_str
 
@@ -296,6 +297,9 @@
                 {
                     var name = all_names[i];
                     var e = document.getElementById(name);
+                    if (e==null){
+                        console.log(name)
+                    }
                     data[name] = e.value;
                 }
                 var xmlhttp = new XMLHttpRequest();
