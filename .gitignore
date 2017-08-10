@@ -13,11 +13,14 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.pyc
 
 # Windows shortcuts
 *.lnk
 *.pyc
-
+*.idea
+.idea/*
+.idea
 # =========================
 # Operating System Files
 # =========================
@@ -28,6 +31,7 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
+.pyc
 .idea
 
 # Thumbnails
@@ -40,6 +44,8 @@ $RECYCLE.BIN/
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
+.idea
+
 
 # Directories potentially created on remote AFP share
 .AppleDB
@@ -49,3 +55,4 @@ Temporary Items
 .apdisk
 .pyc
 .idea
+*.pyc
