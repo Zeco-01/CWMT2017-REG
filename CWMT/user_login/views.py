@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 def user_login_view(request):
 
-    return HttpResponse('The check page')
+    return render(request,'reg.html')
 
 
 
