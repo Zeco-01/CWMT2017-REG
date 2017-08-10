@@ -1,6 +1,7 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+dp.sqlite3
 
 # Folder config file
 Desktop.ini
@@ -14,6 +15,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.pyc
+*.xml
 
 # Windows shortcuts
 *.lnk
@@ -56,3 +58,4 @@ Temporary Items
 .pyc
 .idea
 *.pyc
+*.xml
