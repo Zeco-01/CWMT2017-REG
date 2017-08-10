@@ -19,7 +19,8 @@ $RECYCLE.BIN/
 *.lnk
 *.pyc
 *.idea
-
+.idea/*
+.idea
 # =========================
 # Operating System Files
 # =========================
@@ -45,6 +46,7 @@ $RECYCLE.BIN/
 .VolumeIcon.icns
 .idea
 
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
@@ -53,3 +55,4 @@ Temporary Items
 .apdisk
 .pyc
 .idea
+*.pyc
