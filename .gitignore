@@ -59,3 +59,4 @@ Temporary Items
 .idea
 *.pyc
 *.xml
+db.sqlite3
