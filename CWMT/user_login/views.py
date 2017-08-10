@@ -9,6 +9,9 @@ def user_login_view(request):
 
     return render(request,'reg.html')
 
+def record(request):
+    a = request.POST
+    return HttpResponse(a)
 
 
 # Create your views here.
