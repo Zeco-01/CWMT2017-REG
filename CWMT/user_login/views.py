@@ -6,9 +6,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 def user_login_view(request):
-
-    return render(request,'reg.html')
-
+	print "user_login_view"
+	return render(request,'reg.html')
 
 @csrf_exempt
 def record(request):
