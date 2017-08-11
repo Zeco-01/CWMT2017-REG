@@ -18,10 +18,8 @@ class Processor(object):
 
     @csrf_exempt
     def record(self, request):
+
         strr = ''
-        self.register_code = self.register_code + 1
-        # for x in a:
-        #     strr += x + ':' + a[x]+ "'\n'
         if request.method == 'POST':
             a = request.POST
             json_data = json.loads(request.body)
@@ -29,7 +27,7 @@ class Processor(object):
         if request.method == 'GET':
             raise SyntaxError('GET request cannot use')
 
-        default = {'sex':a['sex'], 'phone': a['phone'], 'mail': a['email'], 'invoice': a['invoice'],'tax_id': a['tax_id'], 'address': a['address'], 'user_id': a['id'], 'paper_id': a['paper_id'],'stay': a['stay'], 'type' : a['type']}
+        default = { 'sex':a['sex'], 'phone': a['phone'], 'mail': a['email'], 'invoice': a['invoice'],'tax_id': a['tax_id'], 'address': a['address'], 'user_id': a['id'], 'paper_id': a['paper_id'],'stay': a['stay'], 'type' : a['type']}
         user, if_success = User.objects.get_or_create(name = a['name'], phone = a['phone'], mail = a['email'], defaults = default)
 
         if if_success == True:
@@ -45,10 +43,11 @@ class Processor(object):
                 user.enter_date = a['in_date']
                 user.out_date = a['out_date']
                 user.m_room = a['m_name']
+            self.register_code = self.register_code + 1
             user.register_number = str(self.register_code)
             user.save()
-            for x in user._meta.fields:
-                strr = strr + str(x) + ':' + str(user._meta.fields[x])+'\n'
+            # for x in user._meta.fields:
+            #     strr = strr + str(x) + ':' + str(user._meta.fields[x])+'\n'
         else:
             strr = "create user failed because identical object exists: register number is: "+str(user.register_number)
         return HttpResponse(strr)
