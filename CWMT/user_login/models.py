@@ -21,7 +21,7 @@ class User(models.Model):
     type = models.CharField(max_length= 200,null=True,blank = True) # user type
     in_date = models.CharField(max_length=100,null = True) # login date
     out_date = models.CharField(max_length=100,null=True) # logout date
-    register_number = models.CharField(unique=True, max_length=20,blank = True,primary_key=True)
+    register_number = models.AutoField(unique=True, max_length=20,blank = True,primary_key=True)
 
     def __str__(self):
         return self.name

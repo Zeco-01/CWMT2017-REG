@@ -26,8 +26,7 @@ class Processor(object):
             a = json_data
         if request.method == 'GET':
             raise SyntaxError('GET request cannot use')
-
-        default = {'name' : str(a['name']), 'phone' : str(a['phone']),'register_number':self.register_code, 'sex':a['sex'], 'phone': str(a['phone']), 'mail': a['email'], 'invoice': a['invoice'],'tax_id': str(a['tax_id']), 'address': a['address'], 'user_id': str(a['id']), 'paper_id': str(a['paper_id']),'stay': a['stay'], 'type' : a['type']}
+        default = {'name' : a['name'], 'phone' : a['phone'], 'sex':a['sex'], 'phone': str(a['phone']), 'mail': a['email'], 'invoice': a['invoice'],'tax_id': str(a['tax_id']), 'address': a['address'], 'user_id': str(a['id']), 'paper_id': str(a['paper_id']),'stay': a['stay'], 'type' : a['type']}
         user, if_success = User.objects.get_or_create(mail = str(a['email']), defaults = default)
 
         if if_success == True:
@@ -43,10 +42,8 @@ class Processor(object):
                 user.in_date = str(a['in_date'])
                 user.out_date = str(a['out_date'])
                 user.m_room = str(a['m_name'])
-            self.register_code = self.register_code + 1
             user.save()
-            for x in user._meta.fields:
-                strr = strr + str(x) + ':' + str(user._meta.fields[x])+'\n'
+            strr = 'name: ' + user.name + '<br />' + 'register number: '+ str(user.register_number)+'\n'
         else:
             strr = "create user failed because identical object exists: register number is: "+str(user.register_number)
         return HttpResponse(strr)
