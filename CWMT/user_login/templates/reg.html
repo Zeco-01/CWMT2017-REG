@@ -304,19 +304,19 @@ var j=0;
                     data[name] = e.value;
                 }
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "./send", true);
+                xmlhttp.open("POST", "../send/", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send(JSON.stringify(data));
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById("test").style.display = "none";
-                        var conf_str = "";
+                        var conf_str = xmlhttp.responseText;
                         var conf = document.getElementById("confirm");
                         conf.style.display = "block";
                         conf.innerHTML = conf_str;
                     } else {
-                        alert("error"+j);
-                        j++;
+                       // alert(xmlhttp.readyState);
+                       // j++;
                     }
                 }
             }
