@@ -310,13 +310,13 @@ var j=0;
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 || xmlhttp.status == 200) {
                         document.getElementById("test").style.display = "none";
-                        var conf_str = "";
+                        var conf_str = xmlhttp.responseText;
                         var conf = document.getElementById("confirm");
                         conf.style.display = "block";
                         conf.innerHTML = conf_str;
                     } else {
-                        alert("error"+j);
-                        j++;
+                       // alert(xmlhttp.readyState);
+                       // j++;
                     }
                 }
             }

@@ -19,7 +19,6 @@ from user_login import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-    url(r'^register/', views.user_login_view),
-    url(r'^send/', views.record)
+    url(r'^send/', views.record),
+    url(r'^register/', views.user_login_view)
 ]
