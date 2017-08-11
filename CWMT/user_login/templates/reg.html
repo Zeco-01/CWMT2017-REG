@@ -308,7 +308,7 @@ var j=0;
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlhttp.send(JSON.stringify(data));
                 xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    if (xmlhttp.readyState == 4 || xmlhttp.status == 200) {
                         document.getElementById("test").style.display = "none";
                         var conf_str = xmlhttp.responseText;
                         var conf = document.getElementById("confirm");
