@@ -109,7 +109,7 @@ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 color: #000;
 text-shadow: 1px 1px 1px #FFF;
 border:1px solid #E4E4E4;
-/*display: none;*/
+display: none;
 }
 .confirm h1{
 	
