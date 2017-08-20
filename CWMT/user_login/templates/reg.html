@@ -111,7 +111,12 @@
         <input id="email" type="email" name="email"/>
         <div id="email_err" class="error_msg"></div>
     </label><br/>
-
+    <label>
+        <span>发票类型：</span>
+        <input type="radio" value="normal" name="invoice_type" onclick=toggle4() id="invoice_type">增值税普通发票
+        <input type="radio" value="sp" name="invoice_type" onclick=toggle5() id="invoice_type">增值税专用发票
+        <div id="invoice_type_err" class="error_msg"></div>
+    </label><br />
     <label>
         <span>发票抬头:</span>
         <input id="invoice" type="text" name="invoice"/>
@@ -123,13 +128,28 @@
         <input id="tax_id" type="text" name="tax_id"/>
         <div id="tax_id_err" class="error_msg"></div>
     </label><br/>
-
+    <div style="display:none" id = "invoice_info">
     <label>
-        <span>发票邮寄地址:（现场缴费必填）</span>
+        <span>发票邮寄地址:</span>
         <input id="address" type="text" name="address"/>
         <div id="address_err" class="error_msg"></div>
     </label><br/>
-
+    <label>
+        <span>电话:</span>
+        <input id="invoice_tel" type="text" name="invoice_tel"/>
+        <div id="invoice_tel_err" class="error_msg"></div>
+    </label><br/>
+    <label>
+        <span>开户银行:</span>
+        <input id="invoice_bank" type="text" name="invoice_bank"/>
+        <div id="invoice_bank_err" class="error_msg"></div>
+    </label><br/>
+        <label>
+        <span>账号:</span>
+        <input id="invoice_id" type="text" name="invoice_id"/>
+        <div id="invoice_id_err" class="error_msg"></div>
+    </label><br/>
+</div>
     <label>
         <span>身份证号:</span>
         <input id="id" type="text" name="id"/>
@@ -190,7 +210,7 @@
 </form>
 
 
-<div class="confirm" id="confirm">
+<div class="confirm" id="confirm" style="display:none">
     <h1>
         第十三届全国机器翻译研讨会（CWMT2017）注册确认
     </h1>
@@ -207,6 +227,15 @@
 </div>
 <script type="text/javascript">
 var j=0;
+    function getValue(radio_name){
+        radios = document.getElementsByName(radio_name);
+        for (var i=0;i<radios.length;i++){
+            if (radios[i].checked){
+                return radios[i].value;
+            }
+        }
+        return null;
+    }
     function toggle1() {
         d = document.getElementById("m_name");
 
@@ -227,11 +256,19 @@ var j=0;
           d2 = document.getElementById("stay_time");
         d2.style.display = "block";
     }
+    function toggle4(){
+        d = document.getElementById("invoice_info");
+        d.style.display = "none";
+    }
+    function toggle5(){
+        d = document.getElementById("invoice_info");
+        d.style.display = "block";
+    }
     function vali() {
         var tele = document.getElementById("time");
         tele.value = new Date().toLocaleString();
         var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "id", "stay"];
-        var all_names = ["name","sex", "phone", "email", "invoice", "tax_id", "address","id","paper_id", "stay","in_date","out_date","type","time","m_name"]
+        var all_names = ["name","sex", "phone", "email", "invoice", "tax_id", "address","id","paper_id", "stay","in_date","out_date","type","time","m_name","invoice_type","invoice_tel","invoice_bank","invoice_id"]
         for (var i = 0; i < names.length; i++) {
             var name = names[i] + "_err";
             var ele = document.getElementById(name);
@@ -298,11 +335,14 @@ var j=0;
                 {
                     var name = all_names[i];
                     var e = document.getElementById(name);
-                    if (e==null){
-                        console.log(name)
-                    }
                     data[name] = e.value;
                 }
+                data["sex"] = getValue("sex");
+                data["stay"] = getValue("stay");
+                data["m_name"] = getValue("m_name");
+                data["invoice_type"] = getValue("invoice_type");
+
+
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.open("POST", "../send/", true);
                 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -313,7 +353,11 @@ var j=0;
                         var conf_str = xmlhttp.responseText;
                         var conf = document.getElementById("confirm");
                         conf.style.display = "block";
-                        conf.innerHTML = conf_str;
+                        //conf.innerHTML = conf_str;
+                        var info = document.getElementById("information");
+                        info.innerHTML = conf_str;
+                        var form = document.getElementById("test");
+                        form.style.display = "none";
                     } else {
                        // alert(xmlhttp.readyState);
                        // j++;
