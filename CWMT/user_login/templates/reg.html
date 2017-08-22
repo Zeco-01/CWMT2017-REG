@@ -173,6 +173,7 @@
         <div id="m_name" style="display:none">
             <input type="radio" value="yes" name="m_name">有合住人姓名
             <input type="radio" value="no" name="m_name" >无合住人姓名
+             <div id="m_name_err" class="error_msg"></div>
         </div>
         <div id="stay_err" class="error_msg"></div>
     </label>
@@ -180,11 +181,13 @@
 <div id="stay_time">
     <label >
         <span>入住日期:</span>
-        <input type="date" name="in_date" style="margin-bottom: 10px" id="in_date"><br />
+        <input type="date" name="in_date" style="margin-bottom: 10px" id="in_date">
+        <div id="in_date_err" class="error_msg"></div><br />
     </label>
     <label >
         <span>离店日期:</span>
-        <input type="date" name="out_date" style="margin-bottom: 10px" id="out_date"><br />
+        <input type="date" name="out_date" style="margin-bottom: 10px" id="out_date">
+        <div id="out_date_err" class="error_msg"></div><br />
     </label>
 </div><br/>
     <label>
@@ -267,15 +270,14 @@ var j=0;
     function vali() {
         var tele = document.getElementById("time");
         tele.value = new Date().toLocaleString();
-        var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "id", "stay"];
+        var names = ["name", "sex", "phone", "email", "invoice", "tax_id", "id", "stay","invoice_type","address","invoice_tel","invoice_bank","invoice_id","in_date","out_date","m_name"];
         var all_names = ["name","sex", "phone", "email", "invoice", "tax_id", "address","id","paper_id", "stay","in_date","out_date","type","time","m_name","invoice_type","invoice_tel","invoice_bank","invoice_id"]
         for (var i = 0; i < names.length; i++) {
             var name = names[i] + "_err";
             var ele = document.getElementById(name);
             ele.style.display = "none";
         }
-
-        var validator = new Validator('test', [
+        v_rules = [
             {
                 name: 'name',
                 display: "请输入姓名",
@@ -314,7 +316,45 @@ var j=0;
                 rules: 'required'
             }
 
-        ], function (obj, evt) {
+        ];
+        if (getValue("stay")!="no"){
+            v_rules.push({
+                name:'in_date',
+                display:"请选择入住日期",
+                rules:'required'
+            },{
+                name:'out_date',
+                display:"请选择离店日期",
+                rules:'required'
+            });
+        }
+        if (getValue("stay") == "multi"){
+            v_rules.push({
+                name:"m_name",
+                display:"请选择是否有合住人姓名",
+                rules:'required'
+            });
+        }
+        if (getValue("invoice_type") == "sp"){
+            v_rules.push({
+                name:'address',
+                display:"请填写发票邮寄地址",
+                rules:'required'
+            },{
+                name:'invoice_tel',
+                display:"请填写电话",
+                rules:'required'
+            },{
+                name:'invoice_bank',
+                display:"请填写开户银行",
+                rules:'required'
+            },{
+                name:'invoice_id',
+                display:"请填写账号",
+                rules:'required'
+            })
+        }
+        var validator = new Validator('test', v_rules, function (obj, evt) {
             if (obj.errors.length > 0) {
 
                 for (var i = 0; i < obj.errors.length; i++) {
@@ -322,7 +362,9 @@ var j=0;
                     var name = obj.errors[i].name;
 
                     var ele = document.getElementById(name + "_err");
-
+                    if (ele == null){
+                        console.log(name);
+                    }
                     ele.style.display = "inline";
                     ele.innerHTML = error_str
 
