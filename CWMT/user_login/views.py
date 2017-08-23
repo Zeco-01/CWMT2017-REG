@@ -41,6 +41,7 @@ class Processor(object):
        
 
         strr = ''
+        return HttpResponse(strr)
         if request.method == 'POST':
             a = request.POST
             json_data = json.loads(request.body)
