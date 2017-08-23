@@ -12,7 +12,7 @@ from email.utils import formataddr
 def mail(my_user,s):
     ret = True
     my_sender = 'cwmt_2017@qq.com'  # 发件人邮箱账号
-    my_pass = 'keudcbbrhvrwdjih'  # 发件人邮箱密码
+    my_pass = 'jgxufajzfoimbcbf'  # 发件人邮箱密码
     # my_user = 'cccaaag@126.com'  # 收件人邮箱账号，我这边发送给自己
     try:
         msg = MIMEText('您的注册信息如下：<br />'+s, 'html', 'utf-8')
