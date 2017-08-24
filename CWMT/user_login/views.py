@@ -9,25 +9,49 @@ import json
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formataddr
-
+import requests
 def mail(my_user,s):
     ret = True
-    my_sender = 'cwmt_2017@qq.com'  # 发件人邮箱账号
-    my_pass = 'jgxufajzfoimbcbf'  # 发件人邮箱密码
+    my_sender = 'cwmt_2017@126.com'  # 发件人邮箱账号
+    # my_pass = 'jgxufajzfoimbcbf'  # 发件人邮箱密码
+    my_pass = '1993zeco0420'  # 发件人邮箱密码
     # my_user = 'cccaaag@126.com'  # 收件人邮箱账号，我这边发送给自己
-    try:
-        msg = MIMEText('您的注册信息如下：<br />'+s, 'html', 'utf-8')
-        msg['From'] = formataddr(["CWMT2017会务组", my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-        msg['To'] = formataddr(["CWMT2017参会注册人", my_user])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-        msg['Subject'] = "请确认您的会议注册信息"  # 邮件的主题，也可以说是标题
+    # try:
+    msg = MIMEText('您的注册信息如下：<br />'+s, 'html', 'utf-8')
 
-        server = smtplib.SMTP_SSL("smtp.qq.com", 465)  # 发件人邮箱中的SMTP服务器，端口是25
-        server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
-        server.sendmail(my_sender, [my_user, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
-        server.quit()  # 关闭连接
-    except Exception:  # 如果 try 中的语句没有执行，则会执行下面的 ret=False
-        ret = False
+    # msg['From'] = formataddr(["CWMT2017会务组", my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+    # msg['To'] = formataddr(["CWMT2017参会注册人", my_user])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+    msg['From'] = my_sender
+    msg['To'] = my_user
+    msg['Subject'] = "请确认您的会议注册信息"  # 邮件的主题，也可以说是标题
+
+    server = smtplib.SMTP_SSL("smtp.126.com")  # 发件人邮箱中的SMTP服务器，端口是25
+    server.login(my_sender, my_pass)  # 括号中对应的是发件人邮箱账号、邮箱密码
+    server.sendmail(my_sender, [my_user], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+    server.quit()  # 关闭连接
+    # except Exception:  # 如果 try 中的语句没有执行，则会执行下面的 ret=False
+    #     ret = False
     return ret
+
+def mail2(to,s):
+
+
+    url = "http://api.sendcloud.net/apiv2/mail/send"                         
+
+    API_USER = 'Zeco_test_NeOmPz'
+    API_KEY = 'huRR8BWRKNR2lDRk'
+
+    params = {                                                                      
+        "apiUser": API_USER, # 使用api_user和api_key进行验证                       
+        "apiKey" : API_KEY,                                             
+        "to" : "cccaaag@126.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔
+        "from" : "CWMT2017@DPbvJvdtTLzLyJVRwOp5hj5BvKzBFs4s.sendcloud.org", # 发信人, 用正确邮件地址替代
+        "fromName" : "CWMT2017会务组",
+        "subject" : "请确认您的注册信息",
+        "html": "欢迎使用SendCloud"
+    }
+    r = requests.post(url,  data=params)
+
 class Processor(object):
     def __init__(self):
         self.register_code = 0
@@ -111,7 +135,7 @@ class Processor(object):
                 strr+= '开户银行：'+user.invoice_bank+'<br />'
                 strr+= '账户：'+user.invoice_id+'<br />'
             else:
-                strr+='发票类型：增值税普通发票'
+                strr+='发票类型：增值税普通发票'+ '<br />'
             strr += '身份证号: '+ user.user_id + '<br />'
             strr += '论文ID: '+ user.paper_id + '<br />'
             strr += '住宿方式: '
@@ -122,13 +146,16 @@ class Processor(object):
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             if user.stay == 'multi':
                 strr += '合住（两人每天390元）'+ '<br />'
-                if user.m_room=='yes':
-                    strr+='有合住人姓名'+ '<br />'
-                else:
-                    strr+='无合住人姓名'+ '<br />'
+                strr += '合住人姓名：'+user.m_room+'<br />'
+                strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
+                # if user.m_room=='yes':
+                #     strr+=user.+ '<br />'
+                # else:
+                #     strr+='无合住人姓名'+ '<br />'
                 strr += '入住日期: '+ user.in_date + ' - ' + user.out_date + '<br />'
             strr +='注册类型：' +types[user.type]+'<br />'
             mail(str(user.mail),strr)
+            # mail2(user.mail,strr)
         else:
             strr = "使用相同邮箱的用户已经注册，请使用其他邮箱"
         return HttpResponse(strr)

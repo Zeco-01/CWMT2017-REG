@@ -170,14 +170,18 @@
         <input type="radio" value="no" name="stay" onclick=toggle2() id="stay">自行解决
         <input type="radio" value="single" name="stay" id="stay" onclick=toggle3()>单间（每人每天350元）
         <input type="radio" value="multi" name="stay" id="stay" onclick=toggle1()>合住（两人每天390元）
-        <div id="m_name" style="display:none">
-            <input type="radio" value="yes" name="m_name">有合住人姓名
-            <input type="radio" value="no" name="m_name" >无合住人姓名
-             <div id="m_name_err" class="error_msg"></div>
-        </div>
+
         <div id="stay_err" class="error_msg"></div>
     </label>
-    <br/>
+    <br/><div id="dm_name" style="display:none">
+    <label><span>合住人姓名：</span>
+     
+            
+            <input type="text" name="m_name" id="m_name">
+            
+
+             <div id="m_name_err" class="error_msg"></div>
+        </label></div> <br/>
 <div id="stay_time">
     <label >
         <span>入住日期:</span>
@@ -236,21 +240,21 @@ var j=0;
         return null;
     }
     function toggle1() {
-        d = document.getElementById("m_name");
+        d = document.getElementById("dm_name");
 
         d.style.display = "block";
         d2 = document.getElementById("stay_time");
         d2.style.display = "block";
     }
     function toggle2() {
-        d = document.getElementById("m_name");
+        d = document.getElementById("dm_name");
 
         d.style.display = "none";
           d2 = document.getElementById("stay_time");
         d2.style.display = "none";
     }
     function toggle3(){
-        d = document.getElementById("m_name");
+        d = document.getElementById("dm_name");
         d.style.display = "none";
           d2 = document.getElementById("stay_time");
         d2.style.display = "block";
@@ -331,7 +335,7 @@ var j=0;
         if (getValue("stay") == "multi"){
             v_rules.push({
                 name:"m_name",
-                display:"请选择是否有合住人姓名",
+                display:"请填写合住人姓名",
                 rules:'required'
             });
         }
@@ -381,7 +385,6 @@ var j=0;
                 }
                 data["sex"] = getValue("sex");
                 data["stay"] = getValue("stay");
-                data["m_name"] = getValue("m_name");
                 data["invoice_type"] = getValue("invoice_type");
 
 
