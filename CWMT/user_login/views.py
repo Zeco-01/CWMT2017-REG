@@ -102,7 +102,7 @@ class Processor(object):
             strr += 'e-mail: '+ user.mail + '<br />'
             strr += '发票抬头: ' + user.invoice + '<br />'
             strr += '发票纳税人识别号: ' + user.tax_id + '<br />'
-            strr += '发票类型：'+user.invoice_bank+'<br />'
+            strr += '发票类型：'+user.invoice_type+'<br />'
             if a['invoice_type'] == 'sp':
                 strr += '发票邮寄地址: ' + user.address + '<br />'
                 strr += '电话：'+user.invoice_tel+'<br />'
