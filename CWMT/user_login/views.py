@@ -91,7 +91,7 @@ class Processor(object):
                 user.invoice_id = a['invoice_id']
 
             user.save()
-            strr='谢谢注册。'+'<br />'+'注册确认信息已经发送到您的邮箱，请注意查收。'+ '<br />' 
+            strr='谢谢注册。'+'<br />'+'注册确认信息已经发送到您的邮箱，请注意查收。'+ '<br />'+'如果没有收到邮件，请在垃圾邮件中查找。'+'<br />' 
             strr +=  '姓名: ' + user.name + '<br />' 
             strr += '性别：'
             if user.sex == 'male':
@@ -103,17 +103,20 @@ class Processor(object):
             strr += 'e-mail: '+ user.mail + '<br />'
             strr += '发票抬头: ' + user.invoice + '<br />'
             strr += '发票纳税人识别号: ' + user.tax_id + '<br />'
-            strr += '发票类型：'+user.invoice_type+'<br />'
+            
             if a['invoice_type'] == 'sp':
+                strr += '发票类型：增值税专用发票<br />'
                 strr += '发票邮寄地址: ' + user.address + '<br />'
                 strr += '电话：'+user.invoice_tel+'<br />'
                 strr+= '开户银行：'+user.invoice_bank+'<br />'
                 strr+= '账户：'+user.invoice_id+'<br />'
+            else:
+                strr+='发票类型：增值税普通发票'
             strr += '身份证号: '+ user.user_id + '<br />'
             strr += '论文ID: '+ user.paper_id + '<br />'
             strr += '住宿方式: '
             if user.stay == 'no':
-                strr += '自行解决'
+                strr += '自行解决'+ '<br />'
             if user.stay == 'single':
                 strr += '单间（350元 /人＊天）' + '<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
