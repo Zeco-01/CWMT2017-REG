@@ -124,7 +124,7 @@ class Processor(object):
                     strr+='无合住人姓名'+ '<br />'
                 strr += '入住日期: '+ user.in_date + ' - ' + user.out_date + '<br />'
             strr +='注册类型：' +types[user.type]+'<br />'
-            mail(user.mail,strr)
+            mail(str(user.mail),strr)
         else:
             strr = "使用相同邮箱的用户已经注册，请使用其他邮箱"
         return HttpResponse(strr)
