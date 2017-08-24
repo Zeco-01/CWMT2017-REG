@@ -91,7 +91,8 @@ class Processor(object):
                 user.invoice_id = a['invoice_id']
 
             user.save()
-            strr =  '姓名: ' + user.name + '<br />' 
+            strr='谢谢注册。'+'<br />'+'注册确认信息已经发送到您的邮箱，请注意查收。'+ '<br />' 
+            strr +=  '姓名: ' + user.name + '<br />' 
             strr += '性别：'
             if user.sex == 'male':
                 strr += '男'
