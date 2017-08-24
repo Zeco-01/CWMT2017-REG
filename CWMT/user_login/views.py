@@ -141,10 +141,10 @@ class Processor(object):
             strr += '住宿方式: '
             if user.stay == 'no':
                 strr += '自行解决'+ '<br />'
-            if user.stay == 'single':
+            elif user.stay == 'single':
                 strr += '单间（350元 /人＊天）' + '<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
-            if user.stay == 'multi':
+            elif user.stay == 'multi':
                 strr += '合住（两人每天390元）'+ '<br />'
                 strr += '合住人姓名：'+user.m_room+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
