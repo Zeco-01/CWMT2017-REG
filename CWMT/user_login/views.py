@@ -100,13 +100,13 @@ class Processor(object):
                 user.out_date = None
                 user.m_room = None
             if a['stay'] == 'single':
-                user.in_date = str(a['in_date'])
-                user.out_date = str(a['out_date'])
+                user.in_date = a['in_date']
+                user.out_date = a['out_date']
                 user.m_room = None
             if a['stay'] == 'multi':
-                user.in_date = str(a['in_date'])
-                user.out_date = str(a['out_date'])
-                user.m_room = str(a['m_name'])
+                user.in_date = a['in_date']
+                user.out_date = a['out_date']
+                user.m_room = a['m_name']
 
             if a['invoice_type'] == 'sp':
                 user.address = a['address']
