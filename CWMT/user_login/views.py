@@ -126,7 +126,7 @@ class Processor(object):
             strr +='注册类型：' +types[user.type]+'<br />'
             mail(user.mail,strr)
         else:
-            strr = "使用相同手机号码的用户已经注册，请使用其他手机号码"
+            strr = "使用相同邮箱的用户已经注册，请使用其他邮箱"
         return HttpResponse(strr)
 
 
