@@ -48,7 +48,17 @@ class Processor(object):
             a = json_data
         if request.method == 'GET':
             raise SyntaxError('GET request cannot use')
-        default = {'name' : a['name'], 'sex':a['sex'], 'phone': a['phone'], 'mail': a['email'], 'invoice': a['invoice'],'tax_id': a['tax_id'],  'user_id': a['id'], 'paper_id': a['paper_id'],'stay': a['stay'], 'type' : a['type']}
+        default = {'name' : a['name'], 
+        'sex':a['sex'], 
+        'phone': a['phone'], 
+        'mail': a['email'],
+         'invoice': a['invoice'],
+         'tax_id': a['tax_id'],  
+         'user_id': a['id'], 
+         'paper_id': a['paper_id'],
+         'stay': a['stay'], 
+         'type' : a['type'],
+         'invoice_type':a['invoice_type']}
         user, if_success = User.objects.get_or_create(mail = a['email'], defaults = default)
         types = {
             'mg1':'普通会员-9月15日前缴费-1600元',
