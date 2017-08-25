@@ -152,8 +152,9 @@ class Processor(object):
                 #     strr+=user.+ '<br />'
                 # else:
                 #     strr+='无合住人姓名'+ '<br />'
-                strr += '入住日期: '+ user.in_date + ' - ' + user.out_date + '<br />'
+                
             strr +='注册类型：' +types[user.type]+'<br />'
+            strr+='<br />缴费时请注明会议简称+姓名，例如：“CWMT+张三”，多人一起交费：“CWMT+张三+李四+王五+...”<br/>'
             mail(str(user.mail),strr)
             # mail2(user.mail,strr)
         else:
