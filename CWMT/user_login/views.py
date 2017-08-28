@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from models import User
 import json
 import smtplib
+import codecs
 from email.mime.text import MIMEText
 from email.utils import formataddr
 import requests
@@ -33,24 +34,6 @@ def mail(my_user,s):
     #     ret = False
     return ret
 
-def mail2(to,s):
-
-
-    url = "http://api.sendcloud.net/apiv2/mail/send"                         
-
-    API_USER = 'Zeco_test_NeOmPz'
-    API_KEY = 'huRR8BWRKNR2lDRk'
-
-    params = {                                                                      
-        "apiUser": API_USER, # 使用api_user和api_key进行验证                       
-        "apiKey" : API_KEY,                                             
-        "to" : "cccaaag@126.com", # 收件人地址, 用正确邮件地址替代, 多个地址用';'分隔
-        "from" : "CWMT2017@DPbvJvdtTLzLyJVRwOp5hj5BvKzBFs4s.sendcloud.org", # 发信人, 用正确邮件地址替代
-        "fromName" : "CWMT2017会务组",
-        "subject" : "请确认您的注册信息",
-        "html": "欢迎使用SendCloud"
-    }
-    r = requests.post(url,  data=params)
 
 class Processor(object):
     def __init__(self):
@@ -142,11 +125,11 @@ class Processor(object):
             if user.stay == 'no':
                 strr += '自行解决'+ '<br />'
             elif user.stay == 'single':
-                strr += '单人大床房（360元/晚）' + '<br />'
+                strr += '单人标间（360元/晚）' + '<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
-            elif user.stay == 'single2':
-                strr+='单人双标间（360元/晚）'+'<br />'
-                strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
+            # elif user.stay == 'single2':
+            #     strr+='单人双标间（360元/晚）'+'<br />'
+            #     strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             elif user.stay == 'multi':
                 strr += '双人双标间（380元/晚）'+ '<br />'
                 strr += '合住人姓名：'+user.m_room+'<br />'
@@ -166,6 +149,9 @@ class Processor(object):
             # mail2(user.mail,strr)
         else:
             strr = "使用相同邮箱的用户已经注册，请使用其他邮箱"
+        outfile = codecs.open('records.txt', mode='a', encoding='utf-8')
+        outfile.write(strr)
+        outfile.close()
         return HttpResponse(strr)
 
 
