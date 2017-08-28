@@ -142,10 +142,17 @@ class Processor(object):
             if user.stay == 'no':
                 strr += '自行解决'+ '<br />'
             elif user.stay == 'single':
-                strr += '单间（350元 /人＊天）' + '<br />'
+                strr += '单人大床房（360元/晚）' + '<br />'
+                strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
+            elif user.stay == 'single2':
+                strr+='单人双标间（360元/晚）'+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             elif user.stay == 'multi':
-                strr += '合住（两人每天390元）'+ '<br />'
+                strr += '双人双标间（380元/晚）'+ '<br />'
+                strr += '合住人姓名：'+user.m_room+'<br />'
+                strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
+            elif user.stay == 'multi2':
+                strr += '豪华套房（60平方米）（680元/晚）'+ '<br />'
                 strr += '合住人姓名：'+user.m_room+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
                 # if user.m_room=='yes':
