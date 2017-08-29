@@ -133,7 +133,7 @@ class Processor(object):
             if user.stay == 'no':
                 strr += '自行解决'+ '<br />'
             elif user.stay == 'single':
-                strr += '单人标间（360元/晚）' + '<br />'
+                strr += '单人标间或单人大床房（360元/晚）' + '<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             # elif user.stay == 'single2':
             #     strr+='单人双标间（360元/晚）'+'<br />'
