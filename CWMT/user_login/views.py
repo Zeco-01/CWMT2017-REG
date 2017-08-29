@@ -145,14 +145,81 @@ class Processor(object):
                 
             strr +='注册类型：' +types[user.type]+'<br />'
             strr+='<br />缴费时请注明会议简称+姓名，例如：“CWMT+张三”，多人一起交费：“CWMT+张三+李四+王五+...”<br/>'
-            mail(str(user.mail),strr)
+            mailstr = ''' 
+
+<style type="text/css">
+   .payment
+  {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:90%;
+  border-collapse:collapse;
+  text-shadow:none;
+  margin-bottom: 30px;
+  }
+.payment td,  th 
+  {
+  font-size:1em;
+  border:1px solid #98bf21;
+  padding:3px 7px 2px 7px;
+  }
+.payment th 
+  {
+  font-size:1.1em;
+  text-align:left;
+  padding-top:5px;
+  padding-bottom:4px;
+  background-color:#A7C942;
+  color:#ffffff;
+  }
+
+.payment  tr.alt td 
+  {
+  color:#000000;
+  background-color:#EAF2D3;
+  }
+    </style>
+            <h2>
+        注册交费方式
+
+    </h2>
+
+    <table class="payment" align="center">
+        <tr>
+            <th>缴纳方式</th>
+            <th>具体信息</th>
+            <th>注意事项</th>
+        </tr>
+        <tr>
+            <td>银行转帐</td>
+            <td>开户银行:工商行北京市分行海淀西区支行<br />户        名:中国中文信息学会<br />账        号:0200004509014415619</td>
+            <td>请在附言中注明<strong>CWMT+姓名</strong>，例如:“CWMT+张三”，多人一起交费:“CWMT+张三+李四+王五+...”</td>
+        </tr>   
+        <tr class="alt">
+            <td>办公室缴纳</td>
+            <td>地        址:北京海淀区中关村南四街4号院7号楼201房间<br />联系电话:010-62562916</td>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>支付宝账号转账</td>
+            <td>户        名:中国中文信息学会<br />账        号:cips_pay@163.com</td>
+            <td>请在付款说明中注明<strong>CWMT+姓名</strong>，例如:“CWMT+张三”，多人一起交费:“CWMT+张三+李四+王五+...”</td>
+        </tr>   
+        <tr class="alt">
+            <td>现场缴费</td>
+            <td>现金或刷卡</td>
+            <td>会后邮寄发票</td>
+        </tr>   
+    </table>'''+strr
+            mail(str(user.mail),mailstr)
+            outfile = codecs.open('records.txt', mode='a', encoding='utf-8')
+            outfile.write(strr)
+            outfile.close()
+            return HttpResponse(strr)
             # mail2(user.mail,strr)
         else:
             strr = "使用相同邮箱的用户已经注册，请使用其他邮箱"
-        outfile = codecs.open('records.txt', mode='a', encoding='utf-8')
-        outfile.write(strr)
-        outfile.close()
-        return HttpResponse(strr)
+            return HttpResponse(strr)
 
 
 processor = Processor()

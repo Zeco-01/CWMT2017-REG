@@ -7,11 +7,11 @@
 </head>
 <body>
     <div class="confirm"><h1>第十三届全国机器翻译研讨会（CWMT2017）会议注册
-        <span>会议网址：<a href="http://ee.dlut.edu.cn/CWMT2017/">http://ee.dlut.edu.cn/CWMT2017/</a><br />
-            时间：2017年9月27-29日<br/>
-            地点：大连市，国网辽宁省电力有限公司大连培训中心<br/>
-            主办单位：中国中文信息学会<br/>
-            承办单位：大连理工大学
+        <span>会议网址:<a href="http://ee.dlut.edu.cn/CWMT2017/">http://ee.dlut.edu.cn/CWMT2017/</a><br />
+            时间:2017年9月27-29日<br/>
+            地点:大连市，国网辽宁省电力有限公司大连培训中心<br/>
+            主办单位:中国中文信息学会<br/>
+            承办单位:大连理工大学
         </spans>
     </h1>
     <h2>
@@ -63,19 +63,19 @@
         </tr>
         <tr>
             <td>银行转帐</td>
-            <td>开户银行：工商行北京市分行海淀西区支行<br />户        名：中国中文信息学会<br />账        号：0200004509014415619</td>
-            <td>请在附言中注明<strong>CWMT+姓名</strong>，例如：“CWMT+张三”，多人一起交费：“CWMT+张三+李四+王五+...”</td>
+            <td>开户银行:工商行北京市分行海淀西区支行<br />户        名:中国中文信息学会<br />账        号:0200004509014415619</td>
+            <td>请在附言中注明<strong>CWMT+姓名</strong>，例如:“CWMT+张三”，多人一起交费:“CWMT+张三+李四+王五+...”</td>
         </tr>   
         <tr class="alt">
             <td>办公室缴纳</td>
-            <td>地        址：北京海淀区中关村南四街4号院7号楼201房间<br />联系电话：010-62562916</td>
+            <td>地        址:北京海淀区中关村南四街4号院7号楼201房间<br />联系电话:010-62562916</td>
             <td></td>
 
         </tr>
         <tr>
             <td>支付宝账号转账</td>
-            <td>户        名：中国中文信息学会<br />账        号：cips_pay@163.com</td>
-            <td>请在付款说明中注明<strong>CWMT+姓名</strong>，例如：“CWMT+张三”，多人一起交费：“CWMT+张三+李四+王五+...”</td>
+            <td>户        名:中国中文信息学会<br />账        号:cips_pay@163.com</td>
+            <td>请在付款说明中注明<strong>CWMT+姓名</strong>，例如:“CWMT+张三”，多人一起交费:“CWMT+张三+李四+王五+...”</td>
         </tr>   
         <tr class="alt">
             <td>现场缴费</td>
@@ -117,7 +117,7 @@
         <div id="email_err" class="error_msg"></div>
     </label><br/>
     <label>
-        <span>发票类型<span style="color:red">*</span>：</span>
+        <span>发票类型<span style="color:red">*</span>:</span>
         <input type="radio" value="normal" name="invoice_type" onclick=toggle4() id="invoice_type">增值税普通发票
         <input type="radio" value="sp" name="invoice_type" onclick=toggle5() id="invoice_type">增值税专用发票（仅对企业一般纳税人）
         <div id="invoice_type_err" class="error_msg"></div>
@@ -181,7 +181,7 @@
         <div id="stay_err" class="error_msg"></div>
     </label>
     <br/><div id="dm_name" style="display:none">
-    <label><span>合住人姓名<span style="color:red">*</span>：</span>
+    <label><span>合住人姓名<span style="color:red">*</span>:</span>
      
             
             <input type="text" name="m_name" id="m_name">
@@ -233,8 +233,9 @@
     </h2>
     <p id="information"></p><br />
     
-    <br />
-</div>
+     
+        <input type="button" class="button" value="返回注册页面" onclick="b2r()"/>
+  </div>
 <script type="text/javascript">
 var j=0;
 var left = new Date()-new Date(2017,9,16,0,0,0);
@@ -255,6 +256,9 @@ if (left<0){
     s_type.options.add(new Option("普通-注册会员-1820元（注册成为会员）"));
     s_type.options.add(new Option("非会员学生-1300元","nms2"));
     s_type.options.add(new Option("普通会员-1900元","nmg2"));
+}
+function b2r(){
+     location.reload();
 }
     function getValue(radio_name){
         radios = document.getElementsByName(radio_name);

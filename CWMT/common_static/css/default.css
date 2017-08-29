@@ -77,7 +77,7 @@ height: 35px;
 line-height: 25px;
 }
 
-.basic-grey .button {
+ .button {
 background: #E27575;
 border: none;
 padding: 10px 25px 10px 25px;
@@ -119,6 +119,10 @@ display: block;
 /*border-bottom:1px solid #E4E4E4;*/
 margin: -10px -15px 30px -10px;;
 color: #000;
+}
+.confirm input{
+  margin-top: 10px;
+margin-left: 30px;
 }
 .confirm p{
 
