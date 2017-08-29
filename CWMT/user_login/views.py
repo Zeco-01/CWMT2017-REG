@@ -127,7 +127,7 @@ class Processor(object):
                 strr+= '账户：'+user.invoice_id+'<br />'
             else:
                 strr+='发票类型：增值税普通发票'+ '<br />'
-            strr += '身份证号: '+ user.user_id + '<br />'
+            strr += '工作单位: '+ user.user_id + '<br />'
             strr += '论文ID: '+ user.paper_id + '<br />'
             strr += '住宿方式: '
             if user.stay == 'no':
