@@ -90,7 +90,10 @@ class Processor(object):
                 user.in_date = a['in_date']
                 user.out_date = a['out_date']
                 user.m_room = a['m_name']
-
+            if a['stay'] == 'multi2':
+                user.in_date = a['in_date']
+                user.out_date = a['out_date']
+                user.m_room = a['m_name']
             if a['invoice_type'] == 'sp':
                 user.address = a['address']
                 user.invoice_tel = a['invoice_tel']
