@@ -170,13 +170,14 @@
 <br/>
 
     <label>
-        <span>住宿方式<span style="color:red">*</span>: </span>
+        <span>住宿方式<span style="color:red">（住宿必须提前一周预订，否则无法保证房间）</span><span style="color:red">*</span>: </span>
 
         
-        <input type="radio" value="single" name="stay" id="stay" onclick=toggle3()>单人标间或单人大床房（360元/晚）
-        <!-- <input type="radio" value="single2" name="stay" id="stay" onclick=toggle3()>单人双标间（360元/晚） -->
-        <input type="radio" value="multi" name="stay" id="stay" onclick=toggle1()>双人双标间（380元/晚）
-    <input type="radio" value="multi2" name="stay" id="stay" onclick=toggle1()>豪华套房（60平方米）（680元/晚）
+        <input type="radio" value="single" name="stay" id="stay" onclick=toggle3()>单人包房：360元/晚（单人入住）
+        
+        <input type="radio" value="multi" name="stay" id="stay" onclick=toggle1()>双人包房：380元/晚
+        <input type="radio" value="multi3" name="stay" id="stay" onclick=toggle3()>单人拼房：190元/晚（会务组随机安排）
+    <input type="radio" value="multi2" name="stay" id="stay" onclick=toggle1()>豪华套间：680元/晚（60平方米）
     <input type="radio" value="no" name="stay" onclick=toggle2() id="stay">自行解决
         <div id="stay_err" class="error_msg"></div>
     </label>
@@ -242,22 +243,22 @@ var left = new Date()-new Date(2017,9,16,0,0,0);
 var s_type = document.getElementById("type");
 if (left<0){
     
-    s_type.options.add(new Option("普通会员-1600元","mg1"));
-    s_type.options.add(new Option("学生会员-1000元","ms1"));
-    s_type.options.add(new Option("学生-注册会员-1060元（注册成为会员）","rs1"));
-    s_type.options.add(new Option("普通-注册会员-1720元（注册成为会员）","rg1"));
-    s_type.options.add(new Option("非会员学生-1200元","nms1"));
-    s_type.options.add(new Option("非会员非学生-1800元","nmg1"));
-    s_type.options.add(new Option("赞助商-免费","free"));
+    s_type.options.add(new Option("普通会员:1600元","mg1"));
+    s_type.options.add(new Option("学生会员:1000元","ms1"));
+    s_type.options.add(new Option("学生-注册会员:1060元（注册成为会员）","rs1"));
+    s_type.options.add(new Option("普通-注册会员:1720元（注册成为会员）","rg1"));
+    s_type.options.add(new Option("非会员学生:1200元","nms1"));
+    s_type.options.add(new Option("非会员非学生:1800元","nmg1"));
+    s_type.options.add(new Option("赞助商:免费","free"));
 
 }else{
-    s_type.options.add(new Option("普通会员-1700元","mg2"));
-    s_type.options.add(new Option("学生会员-1100元","ms2"));
-    s_type.options.add(new Option("学生-注册会员-1160元（注册成为会员）","rs2"));
-    s_type.options.add(new Option("普通-注册会员-1820元（注册成为会员）","rg2"));
-    s_type.options.add(new Option("非会员学生-1300元","nms2"));
-    s_type.options.add(new Option("普通会员-1900元","nmg2"));
-    s_type.options.add(new Option("赞助商-免费","free"));
+    s_type.options.add(new Option("普通会员:1700元","mg2"));
+    s_type.options.add(new Option("学生会员:1100元","ms2"));
+    s_type.options.add(new Option("学生-注册会员:1160元（注册成为会员）","rs2"));
+    s_type.options.add(new Option("普通-注册会员:1820元（注册成为会员）","rg2"));
+    s_type.options.add(new Option("非会员学生:1300元","nms2"));
+    s_type.options.add(new Option("普通会员:1900元","nmg2"));
+    s_type.options.add(new Option("赞助商:免费","free"));
 }
 function b2r(){
      location.reload();
@@ -364,7 +365,7 @@ function b2r(){
                 rules:'required'
             });
         }
-        if (getValue("stay") == "multi"){
+        if (getValue("stay") == "multi" || getValue("stay")=="multi2" ){
             v_rules.push({
                 name:"m_name",
                 display:"请填写合住人姓名，如果没有请填写无",

@@ -68,21 +68,21 @@ class Processor(object):
          'invoice_type':a['invoice_type']}
         user, if_success = User.objects.get_or_create(mail = a['email'], defaults = default)
         types = {
-            'mg1':'普通会员-9月15日前缴费-1600元',
-            'ms1':'学生会员-9月15日前缴费-1000元',
-            'nms1':'非会员学生-9月15日前缴费-1200元',
-            'nmg1':'非学生非会员-9月15日前缴费-1800元',
-            'rs1':'学生-注册会员-1060元（注册成为会员）',
-            'rg1':'普通-注册会员-1720元（注册成为会员）',
+            'mg1':'普通会员-9月15日前缴费：1600元',
+            'ms1':'学生会员-9月15日前缴费：1000元',
+            'nms1':'非会员学生-9月15日前缴费：1200元',
+            'nmg1':'非学生非会员-9月15日前缴费：1800元',
+            'rs1':'学生-注册会员：1060元（注册成为会员）',
+            'rg1':'普通-注册会员：1720元（注册成为会员）',
 
-            'mg2':'普通会员-9月15日后缴费-1700元',
-            'ms2':'学生会员-9月15日前缴费-1100元',
-            'nms2':'非会员学生-9月15日后缴费-1300元',
-            'nmg2':'非学生非会员-9月15日后缴费-1900元',
-            'rs2':'学生-注册会员-1160元（注册成为会员）',
-            'rg2':'普通-注册会员-1820元（注册成为会员）',
+            'mg2':'普通会员-9月15日后缴费：1700元',
+            'ms2':'学生会员-9月15日前缴费：1100元',
+            'nms2':'非会员学生-9月15日后缴费：1300元',
+            'nmg2':'非学生非会员-9月15日后缴费：1900元',
+            'rs2':'学生-注册会员：1160元（注册成为会员）',
+            'rg2':'普通-注册会员：1820元（注册成为会员）',
 
-            'free':'赞助商-免费'
+            'free':'赞助商：免费'
         }
         if if_success == True:
             if a['stay'] == 'no':
@@ -101,6 +101,11 @@ class Processor(object):
                 user.in_date = a['in_date']
                 user.out_date = a['out_date']
                 user.m_room = a['m_name']
+
+            if a['stay'] == "multi3":
+                user.in_date = a['in_date']
+                user.out_date = a['out_date']
+                user.m_room = None
             if a['invoice_type'] == 'sp':
                 user.address = a['address']
                 user.invoice_tel = a['invoice_tel']
@@ -135,17 +140,17 @@ class Processor(object):
             if user.stay == 'no':
                 strr += '自行解决'+ '<br />'
             elif user.stay == 'single':
-                strr += '单人标间或单人大床房（360元/晚）' + '<br />'
+                strr += '单人包房：360元/晚（单人入住）' + '<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
-            # elif user.stay == 'single2':
-            #     strr+='单人双标间（360元/晚）'+'<br />'
-            #     strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
+            elif user.stay == 'multi3':
+                strr+='单人拼房：190元/晚（会务组随机安排）'+'<br />'
+                strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             elif user.stay == 'multi':
-                strr += '双人双标间（380元/晚）'+ '<br />'
+                strr += '双人包房：380元/晚'+ '<br />'
                 strr += '合住人姓名：'+user.m_room+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             elif user.stay == 'multi2':
-                strr += '豪华套房（60平方米）（680元/晚）'+ '<br />'
+                strr += '豪华套间：680元/晚（60平方米）'+ '<br />'
                 strr += '合住人姓名：'+user.m_room+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
                 # if user.m_room=='yes':
