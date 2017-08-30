@@ -87,7 +87,7 @@ border-radius: 3px;
 text-shadow: 1px 1px 1px #9E3F3F;
 cursor: pointer;
 }
-.basic-grey .button:hover {
+ .button:hover {
 background: #F28585
 }
 .error_msg {
@@ -136,7 +136,7 @@ color: #000;
 font-size: 14px;
 }
 .confirm h2{
-	margin: -10px -15px 30px -10px;;
+	margin: -10px -15px 15px -10px;;
 color: #000;
 padding: 0px 0px 10px 40px;
 display: block;
@@ -151,7 +151,7 @@ display: block;
   width:90%;
   border-collapse:collapse;
   text-shadow:none;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   }
 .payment td,  th 
   {
@@ -174,4 +174,10 @@ display: block;
   color:#000000;
   background-color:#EAF2D3;
   }
-    
+.middle{
+     margin-left: auto;
+   margin-right: auto;
+}
+.middle-out{
+  text-align: center;
+}

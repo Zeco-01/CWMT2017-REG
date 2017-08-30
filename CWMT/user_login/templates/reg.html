@@ -6,7 +6,7 @@
     <script type="text/javascript" src="/static/js/validator.min.js"></script>
 </head>
 <body>
-    <div class="confirm"><h1>第十三届全国机器翻译研讨会（CWMT2017）会议注册
+    <div class="confirm"><h1>第十三届全国机器翻译研讨会（CWMT2017）会议注册<br />
         <span>会议网址:<a href="http://ee.dlut.edu.cn/CWMT2017/">http://ee.dlut.edu.cn/CWMT2017/</a><br />
             时间:2017年9月27-29日<br/>
             地点:大连市，国网辽宁省电力有限公司大连培训中心<br/>
@@ -177,7 +177,7 @@
         
         <input type="radio" value="multi" name="stay" id="stay" onclick=toggle1()>双人包房：380元/晚
         <input type="radio" value="multi3" name="stay" id="stay" onclick=toggle3()>单人拼房：190元/晚（会务组随机安排）
-    <input type="radio" value="multi2" name="stay" id="stay" onclick=toggle1()>豪华套间：680元/晚（60平方米）
+    <input type="radio" value="multi2" name="stay" id="stay" onclick=toggle3()>豪华套间：680元/晚（60平方米）
     <input type="radio" value="no" name="stay" onclick=toggle2() id="stay">自行解决
         <div id="stay_err" class="error_msg"></div>
     </label>
@@ -217,10 +217,10 @@
     </label><br/>
     
     <br />
-    <label>
-        <span>&nbsp;</span>
+   <div class="middle-out">
+        <div class="middle">
         <input type="button" class="button" value="提交" onclick="vali()"/>
-    </label>
+   </div></div>
     <input type="hidden" name="time" id="time"/>
 </form>
 
@@ -365,7 +365,7 @@ function b2r(){
                 rules:'required'
             });
         }
-        if (getValue("stay") == "multi" || getValue("stay")=="multi2" ){
+        if (getValue("stay") == "multi"  ){
             v_rules.push({
                 name:"m_name",
                 display:"请填写合住人姓名，如果没有请填写无",
