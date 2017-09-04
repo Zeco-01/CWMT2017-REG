@@ -88,24 +88,24 @@ class Processor(object):
             if a['stay'] == 'no':
                 user.in_date = None
                 user.out_date = None
-                user.m_room = None
+                user.m_name = None
             if a['stay'] == 'single':
                 user.in_date = a['in_date']
                 user.out_date = a['out_date']
-                user.m_room = None
+                user.m_name = None
             if a['stay'] == 'multi':
                 user.in_date = a['in_date']
                 user.out_date = a['out_date']
-                user.m_room = a['m_name']
+                user.m_name = a['m_name']
             if a['stay'] == 'multi2':
                 user.in_date = a['in_date']
                 user.out_date = a['out_date']
-                user.m_room = a['m_name']
+                user.m_name = a['m_name']
 
             if a['stay'] == "multi3":
                 user.in_date = a['in_date']
                 user.out_date = a['out_date']
-                user.m_room = None
+                user.m_name = None
             if a['invoice_type'] == 'sp':
                 user.address = a['address']
                 user.invoice_tel = a['invoice_tel']
@@ -147,11 +147,11 @@ class Processor(object):
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             elif user.stay == 'multi':
                 strr += '双人包房：380元/晚'+ '<br />'
-                strr += '合住人姓名：'+user.m_room+'<br />'
+                strr += '合住人姓名：'+user.m_name+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
             elif user.stay == 'multi2':
                 strr += '豪华套间：680元/晚（60平方米）'+ '<br />'
-                strr += '合住人姓名：'+user.m_room+'<br />'
+                strr += '合住人姓名：'+user.m_name+'<br />'
                 strr += '入住日期: '+ user.in_date + ' - '+ user.out_date + '<br />'
                 # if user.m_room=='yes':
                 #     strr+=user.+ '<br />'
